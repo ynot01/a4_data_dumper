@@ -2,7 +2,7 @@
 
 This plugin is meant primarily for developers to dump data that is useful to the wiki, for wiki data automation
 
-Once the UI scene is loaded, it will gather game object data and export it to `AppData\LocalLow\Vellocet\ANEURISM IV\item_data.json`
+Once the UI scene is loaded, it will gather game object data and export it to `AppData\LocalLow\Vellocet\ANEURISM IV\item_data.json` then it force closes the game
 
 The data exported, at the time of writing, includes:
 - Weapon data (firerate, recoil, damage, damage type, ammo count, ammo types)

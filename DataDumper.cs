@@ -16,6 +16,8 @@ namespace data_dumper
 			if (uiScene.loadingState == Scene.LoadingState.Loaded)
 			{
 				string Path = Application.persistentDataPath + "/item_data.json";
+
+
 				string myData = "";
 				myData += @"{
 				""WeaponData"": {
@@ -33,6 +35,22 @@ namespace data_dumper
 
 				myData += "\n},\n";
 
+
+				myData += @"
+				""Ammo"": {
+				";
+
+				Entities.Items.Ammo[] ammoObjs = Resources.FindObjectsOfTypeAll<Entities.Items.Ammo>();
+
+				foreach (var go in ammoObjs)
+				{
+					myData += "	\"" + go.name + "\":";
+					myData += JsonUtility.ToJson(go);
+					myData += ",\n";
+				}
+				myData += "	\"Null\":{}";
+
+				myData += "\n},\n";
 
 
 				myData += @"

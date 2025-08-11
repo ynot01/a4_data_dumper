@@ -1,0 +1,10 @@
+[project]
+name = "data-dumper"
+version = "0.0.1"
+description = "ANEURISM IV wiki data dumping"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "bitflags>=1.2.0",
+    "mwcleric>=0.10.4",
+]

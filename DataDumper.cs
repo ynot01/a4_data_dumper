@@ -71,6 +71,22 @@ namespace data_dumper
 
 
 				myData += @"
+				""Type"": {
+				";
+
+
+				int type = 0;
+				foreach (var go in Enum.GetValues(typeof(Entities.Items.WeaponData.WeaponType)).Cast<Entities.Items.WeaponData.WeaponType>())
+				{
+					myData += "	\"" + type + "\":\"" + go + "\"";
+					myData += ",\n";
+					type++;
+				}
+				myData += "	\"-1\":\"Null\"";
+				myData += "\n},\n";
+
+
+				myData += @"
 				""FiringType"": {
 				";
 

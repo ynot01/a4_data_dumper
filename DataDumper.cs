@@ -4,6 +4,7 @@ using BepInEx.Unity.IL2CPP;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
+using Il2CppSystems;
 
 namespace data_dumper
 {
@@ -12,7 +13,7 @@ namespace data_dumper
 	{
 		void Update()
 		{
-			Scene uiScene = SceneManager.GetSceneByName("UserInterface");
+			Scene uiScene = SceneManager.GetSceneByName("AneurismIV");
 			if (uiScene.loadingState == Scene.LoadingState.Loaded)
 			{
 				string Path = Application.persistentDataPath + "/item_data.json";
@@ -135,6 +136,31 @@ namespace data_dumper
 				myData += "	\"Null\":{}";
 				myData += "\n},\n";
 
+				myData += @"
+				""Products"": {
+				";
+				foreach (var product in Managers.GameManager.DealerSystem.products)
+				{
+					myData += "	\"" + product.Key.name + "\":";
+					myData += product.Value;
+					myData += ",\n";
+				}
+				myData += "	\"Null\": 0";
+				myData += "\n},\n";
+
+				myData += @"
+				""LootTable"": [
+				";
+				LootTableEntry[] rarities = Managers.GameManager.LootSystem.lootTable;
+
+				foreach (LootTableEntry entry in rarities)
+				{
+					myData += "	{\"Type\": \"" + entry.lootNodeType + "\",\n";
+					myData += "	\"Rarity\": \"" + entry.rarity + "\",\n";
+					myData += "	\"Item\": \"" + entry.entityData.name + "\"},\n";
+				}
+				myData += "{}";
+				myData += "\n],\n";
 
 
 				myData += @"
@@ -192,6 +218,8 @@ namespace data_dumper
 				myData += "\n}";
 
 				myData += "\n}";
+
+				Console.WriteLine(myData);
 
 				var des = JsonConvert.DeserializeObject(myData);
 				File.WriteAllText(Path, JsonConvert.SerializeObject(des, Formatting.Indented));

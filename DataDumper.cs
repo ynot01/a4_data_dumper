@@ -13,7 +13,7 @@ namespace data_dumper
 	{
 		void Update()
 		{
-			Scene uiScene = SceneManager.GetSceneByName("AneurismIV");
+			Scene uiScene = SceneManager.GetSceneByName("Misery");
 			if (uiScene.loadingState == Scene.LoadingState.Loaded)
 			{
 				string Path = Application.persistentDataPath + "/item_data.json";

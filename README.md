@@ -4,12 +4,16 @@ This plugin is meant primarily for developers to dump data that is useful to the
 
 Once the UI scene is loaded, it will gather game object data and export it to `AppData\LocalLow\Vellocet\ANEURISM IV\item_data.json` then it force closes the game
 
+(Proton path is `/home/$USER/.local/share/Steam/steamapps/compatdata/2773280/pfx/drive_c/users/steamuser/AppData/LocalLow/Vellocet/ANEURISM IV/item_data.json`)
+
 The data exported, at the time of writing, includes:
 - Weapon data (firerate, recoil, damage, damage type, ammo count, ammo types)
 - Consumable data (effects, attributes, exceptions like sus meat by scum)
 - Entity data (weight, contraband, inventoriable, soulbound)
 - Instance IDs (used in some places like ammo or consumable fate exceptions)
 - Fates (anamnecyte cost, karma req, loadout, health, speed)
+- Products (Night market base prices)
+- Loot table with rarity weights
 - Enums
   - Attributes (for consumables)
   - TagsWeapon (damage type)
